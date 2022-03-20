@@ -1,4 +1,9 @@
+import AppLayout from '../components/AppLayout';
 const Home = () => {
-  return <div>HOME : 동욱</div>;
+  return (
+    <AppLayout>
+      <div>HOME : 동욱</div>
+    </AppLayout>
+  );
 };
 export default Home;
