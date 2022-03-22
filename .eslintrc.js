@@ -2,18 +2,18 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true,
+    node: true
   },
   extends: ['react-app', 'plugin:prettier/recommended'],
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
-      legacyDecorators: true,
+      legacyDecorators: true
     },
     ecmaVersion: 2018,
     requireConfigFile: false,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   rules: {
     'array-callback-return': 'off',
@@ -24,7 +24,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-explicit-any': 'off',
     'import/no-anonymous-default-export': 'off',
-    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }]
   },
   overrides: [
     {
@@ -33,30 +33,30 @@ module.exports = {
         browser: true,
         node: true,
         commonjs: true,
-        es2021: true,
+        es2021: true
       },
       extends: [
         'plugin:react/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:import/errors',
         'plugin:import/warnings',
-        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended'
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
+          jsx: true
         },
         ecmaVersion: 2018,
-        sourceType: 'module',
+        sourceType: 'module'
       },
       plugins: ['react', '@typescript-eslint'],
       rules: {
         'react/react-in-jsx-scope': 'off',
         'import/no-unresolved': 'off',
         '@typescript-eslint/no-var-requires': 0,
-        '@typescript-eslint/no-explicit-any': 'off',
-      },
-    },
-  ],
+        '@typescript-eslint/no-explicit-any': 'off'
+      }
+    }
+  ]
 };

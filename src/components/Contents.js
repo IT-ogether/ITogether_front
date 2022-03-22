@@ -1,5 +1,6 @@
 import MyCard from './MyCard';
 const Contents = ({ data }) => {
+  console.log(data);
   return (
     <div className="Contents">
       {data.map((it) => (

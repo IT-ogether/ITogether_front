@@ -1,4 +1,6 @@
 import * as React from 'react';
+import HashTag from './HashTag';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -14,8 +16,9 @@ export default function MyCard({
   title,
   logo,
   recruitment_period,
-  fields,
+  fields
 }) {
+  console.log(fields);
   return (
     <div className="MyCard">
       <Card sx={{ maxWidth: 345 }}>
@@ -25,9 +28,7 @@ export default function MyCard({
           subheader={recruitment_period}
         />
         <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            #프론트엔드 #백엔드 #디자이너 #대학생 #직장인
-          </Typography>
+          <HashTag fields={fields} />
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
@@ -50,10 +51,10 @@ export default function MyCard({
   );
 }
 
-MyCard.defaultProps = {
-  id: 1,
-  title: '제목',
-  logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-  recruitment_period: '모집기간',
-  fileds: ['프론트엔드', '백엔드'],
+MyCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
+  recruitment_period: PropTypes.string.isRequired,
+  fields: PropTypes.array.isRequired
 };
