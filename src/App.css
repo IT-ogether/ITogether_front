@@ -48,3 +48,20 @@ body {
   display: flex;
   align-items: center;
 }
+
+/*Category*/
+.Category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.Contents {
+  margin: 30px 0;
+}
+
+/*MyCard*/
+.MyCard {
+  margin: 10px;
+}
