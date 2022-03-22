@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import HashTag from './HashTag';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
@@ -7,9 +7,9 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 export default function MyCard({
   id,
@@ -18,6 +18,10 @@ export default function MyCard({
   recruitment_period,
   fields
 }) {
+  const [liked, setLiked] = useState(false);
+  const onToggleLike = () => {
+    setLiked((prev) => !prev);
+  };
   console.log(fields);
   return (
     <div className="MyCard">
@@ -31,12 +35,8 @@ export default function MyCard({
           <HashTag fields={fields} />
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon
-              onClick={() => {
-                alert('즐겨찾기 추후 구현');
-              }}
-            />
+          <IconButton onClick={onToggleLike} aria-label="add to favorites">
+            {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon
