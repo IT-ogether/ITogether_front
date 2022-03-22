@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HashTag from './HashTag';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
@@ -11,7 +12,9 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
+import ToolTip from './ToolTip';
 export default function MyCard({
+  category,
   id,
   title,
   logo,
@@ -22,14 +25,18 @@ export default function MyCard({
   const onToggleLike = () => {
     setLiked((prev) => !prev);
   };
-  console.log(fields);
+
+  const navigate = useNavigate();
   return (
     <div className="MyCard">
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={<Avatar alt="avatar" sx={{ bgcolor: red[500] }} src={logo} />}
           title={title}
-          subheader={recruitment_period}
+          subheader={
+            <ToolTip titleText={recruitment_period} hideText={'모집기간'} />
+          }
+          onClick={() => navigate(`/detailinfo/${category}/${id}`)}
         />
         <CardContent>
           <HashTag fields={fields} />

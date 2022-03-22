@@ -86,9 +86,12 @@ const MainInfo = () => {
           categories={categories}
           setChosenCategory={setChosenCategory}
         />
-        {/* <Contents data={club} /> */}
-        {chosenCategory === 'club' && <Contents data={club} />}
-        {chosenCategory === 'kdt' && <Contents data={kdt} />}
+        {chosenCategory === 'club' && (
+          <Contents data={club} category={chosenCategory} />
+        )}
+        {chosenCategory === 'kdt' && (
+          <Contents data={kdt} category={chosenCategory} />
+        )}
       </div>
     </AppLayout>
   );

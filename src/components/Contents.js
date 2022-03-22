@@ -1,10 +1,9 @@
 import MyCard from './MyCard';
-const Contents = ({ data }) => {
-  console.log(data);
+const Contents = ({ data, category }) => {
   return (
     <div className="Contents">
       {data.map((it) => (
-        <MyCard key={it.id} {...it} />
+        <MyCard key={it.id} {...it} category={category} />
       ))}
     </div>
   );
