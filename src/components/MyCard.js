@@ -1,19 +1,31 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import HashTag from './HashTag';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
+import ToolTip from './ToolTip';
 export default function MyCard({
   id,
   title,
   logo,
   recruitment_period,
+  fields
+}) {
+  const [liked, setLiked] = useState(false);
+  const onToggleLike = () => {
+    setLiked((prev) => !prev);
+  };
+
+  const navigate = useNavigate();
   fields,
 }) {
   return (
@@ -22,6 +34,17 @@ export default function MyCard({
         <CardHeader
           avatar={<Avatar alt="avatar" sx={{ bgcolor: red[500] }} src={logo} />}
           title={title}
+          subheader={
+            <ToolTip titleText={recruitment_period} hideText={'모집기간'} />
+          }
+          onClick={() => navigate(`/detailinfo/${category}/${id}`)}
+        />
+        <CardContent>
+          <HashTag fields={fields} />
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton onClick={onToggleLike} aria-label="add to favorites">
+            {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           subheader={recruitment_period}
         />
         <CardContent>
@@ -50,10 +73,11 @@ export default function MyCard({
   );
 }
 
-MyCard.defaultProps = {
-  id: 1,
-  title: '제목',
-  logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-  recruitment_period: '모집기간',
-  fileds: ['프론트엔드', '백엔드'],
+
+MyCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  logo: PropTypes.string.isRequired,
+  recruitment_period: PropTypes.string.isRequired,
+  fields: PropTypes.array.isRequired
 };
