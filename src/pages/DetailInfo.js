@@ -36,6 +36,11 @@ const DetailInfo = () => {
           fields={['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드']}
         />
       </Box>
+<<<<<<< HEAD
+=======
+      <div>{id}</div>
+      <div>{category}</div>
+>>>>>>> d083c47 (feat: ToolTip 구현)
     </AppLayout>
   );
 };

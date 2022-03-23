@@ -14,6 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import ToolTip from './ToolTip';
 export default function MyCard({
+  category,
   id,
   title,
   logo,
@@ -25,6 +26,7 @@ export default function MyCard({
   const onToggleLike = () => {
     setLiked((prev) => !prev);
   };
+
   const navigate = useNavigate();
   return (
     <div className="MyCard">
