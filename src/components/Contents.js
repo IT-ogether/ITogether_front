@@ -4,6 +4,11 @@ const Contents = ({ data, category }) => {
     <div className="Contents">
       {data.map((it) => (
         <MyCard key={it.id} {...it} category={category} />
+const Contents = ({ data }) => {
+  return (
+    <div className="Contents">
+      {data.map((it) => (
+        <MyCard key={it.id} {...it} />
       ))}
     </div>
   );
