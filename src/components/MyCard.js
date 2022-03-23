@@ -19,8 +19,7 @@ export default function MyCard({
   title,
   logo,
   recruitment_period,
-  fields,
-  category
+  fields
 }) {
   const [liked, setLiked] = useState(false);
   const onToggleLike = () => {
