@@ -13,7 +13,6 @@ export default function Category({ categories, setChosenCategory }) {
       <Tabs value={value} onChange={handleChange}>
         {categories.map((it) => (
           <Tab label={it.name} value={it.value} key={it.name} />
-          <Tab label={it.name} value={it.value} />
         ))}
       </Tabs>
     </div>
