@@ -36,8 +36,6 @@ const DetailInfo = () => {
           fields={['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드']}
         />
       </Box>
-      <div>{id}</div>
-      <div>{category}</div>
     </AppLayout>
   );
 };

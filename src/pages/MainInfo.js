@@ -6,7 +6,6 @@ const MainInfo = () => {
   const categories = [
     {
       value: 'club',
-
       name: '동아리'
     },
     {
@@ -37,8 +36,6 @@ const MainInfo = () => {
       qualifications: ['대학생', '직장인'],
       fields: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
       details: '활동비 10만원'
-      fileds: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
-      details: '활동비 10만원',
     },
     {
       id: 2,
@@ -50,8 +47,6 @@ const MainInfo = () => {
       qualifications: ['대학생', '직장인'],
       fields: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
       details: '디테일!!'
-      fileds: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
-      details: '디테일!!',
     },
     {
       id: 3,
@@ -97,8 +92,6 @@ const MainInfo = () => {
         {chosenCategory === 'kdt' && (
           <Contents data={kdt} category={chosenCategory} />
         )}
-        {chosenCategory === 'club' && <Contents data={club} />}
-        {chosenCategory === 'kdt' && <Contents data={kdt} />}
       </div>
     </AppLayout>
   );

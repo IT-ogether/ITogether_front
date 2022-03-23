@@ -14,6 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShareIcon from '@mui/icons-material/Share';
 import ToolTip from './ToolTip';
 export default function MyCard({
+  category,
   id,
   title,
   logo,
@@ -26,8 +27,6 @@ export default function MyCard({
   };
 
   const navigate = useNavigate();
-  fields,
-}) {
   return (
     <div className="MyCard">
       <Card sx={{ maxWidth: 345 }}>
@@ -42,23 +41,12 @@ export default function MyCard({
         <CardContent>
           <HashTag fields={fields} />
         </CardContent>
+        <CardContent>
+          <HashTag fields={fields} />
+        </CardContent>
         <CardActions disableSpacing>
           <IconButton onClick={onToggleLike} aria-label="add to favorites">
             {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-          subheader={recruitment_period}
-        />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            #프론트엔드 #백엔드 #디자이너 #대학생 #직장인
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon
-              onClick={() => {
-                alert('즐겨찾기 추후 구현');
-              }}
-            />
           </IconButton>
           <IconButton aria-label="share">
             <ShareIcon
@@ -72,7 +60,6 @@ export default function MyCard({
     </div>
   );
 }
-
 
 MyCard.propTypes = {
   id: PropTypes.number.isRequired,
