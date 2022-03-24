@@ -20,7 +20,7 @@ body {
 }
 @media (max-width: 700px) {
   .App {
-    width: 90vw;
+    width: 80vw;
   }
 }
 
@@ -64,4 +64,19 @@ body {
 /*MyCard*/
 .MyCard {
   margin: 10px;
+}
+
+/*HomeTitle*/
+.Home {
+  color: black;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+/*mainInfoBtn*/
+.mainInfoBtn {
+  margin-top: 20px;
 }
