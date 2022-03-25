@@ -1,8 +1,13 @@
+import React, { useState } from 'react';
 import AppLayout from '../components/AppLayout';
+import HomeTitle from '../components/HomeTitle';
+
 const Home = () => {
   return (
     <AppLayout>
-      <div>HOME : 동욱</div>
+      <div>
+        <HomeTitle />
+      </div>
     </AppLayout>
   );
 };
