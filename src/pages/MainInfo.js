@@ -13,7 +13,7 @@ const MainInfo = () => {
       name: '교육'
     },
     {
-      value: 'semina',
+      value: 'seminar',
       name: '세미나'
     },
     {
