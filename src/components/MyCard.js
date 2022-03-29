@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import KakaoShareButton from './KakaoShareBtn';
 import HashTag from './HashTag';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
@@ -11,7 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ShareIcon from '@mui/icons-material/Share';
 import ToolTip from './ToolTip';
 export default function MyCard({
   category,
@@ -41,19 +41,12 @@ export default function MyCard({
         <CardContent>
           <HashTag fields={fields} />
         </CardContent>
-        <CardContent>
-          <HashTag fields={fields} />
-        </CardContent>
         <CardActions disableSpacing>
           <IconButton onClick={onToggleLike} aria-label="add to favorites">
             {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
           <IconButton aria-label="share">
-            <ShareIcon
-              onClick={() => {
-                alert('공유하기 추후 구현');
-              }}
-            />
+            <KakaoShareButton title={title} imgUrl={logo} />
           </IconButton>
         </CardActions>
       </Card>
