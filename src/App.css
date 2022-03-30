@@ -27,6 +27,12 @@ body {
 .App {
   padding: 20px;
 }
+
+.AppLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /*Footer*/
 .Footer {
   color: gray;
@@ -72,3 +78,68 @@ body {
   padding-top: 10px;
   padding-bottom: 30px;
 }
+
+/*detailinfo*/
+.detailinfo__title {
+  display: flex;
+  justify-content: center;
+}
+
+/*SpeechBubble*/
+.speech-bubble-left {
+  padding: 8px;
+  margin: 20px 0;
+  position: relative;
+  background: #cc8af0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4em;
+  width: 70%;
+  height: 5vh;
+}
+
+.speech-bubble-left:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-right-color: #cc8af0;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -4.5px;
+  margin-left: -9px;
+}
+
+.speech-bubble-right {
+  padding: 8px;
+  margin: 20px 0;
+  position: relative;
+  background: #8ab1f0;
+  border-radius: 0.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 10vh;
+}
+
+.speech-bubble-right:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-left-color: #8ab1f0;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -4.5px;
+  margin-right: -9px;
+}
+
+/*TODO: 변수명 맞추기 */
