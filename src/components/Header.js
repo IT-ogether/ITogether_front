@@ -1,4 +1,5 @@
-import Button from '@mui/material/Button';
+import KakaoLogin from './KakaoLogin';
+import KakaoLogout from './KakaoLogout';
 
 //TODO : 추후 검색창 추가
 const Header = () => {
@@ -6,7 +7,11 @@ const Header = () => {
     <div className="Header">
       <div className="Header__logo">ITogether(로고)</div>
       <div></div>
-      <Button variant="outlined">LOGIN</Button>
+      {localStorage.getItem('isLogin') === null ? (
+        <KakaoLogin />
+      ) : (
+        <KakaoLogout />
+      )}
     </div>
   );
 };
