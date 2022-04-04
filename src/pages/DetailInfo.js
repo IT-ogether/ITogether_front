@@ -2,23 +2,26 @@ import AppLayout from '../components/AppLayout';
 import HashTag from '../components/HashTag';
 import ToolTip from '../components/ToolTip';
 import { useParams } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Container,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Paper
-} from '@mui/material';
 import SpeechBubbleLeft from '../components/SpeechBubble/SpeechBubbleLeft';
 import SpeechBubbleRight from '../components/SpeechBubble/SpeechBubbleRight';
+import Review from '../components/Review';
+import { Box, Button, Container } from '@mui/material';
 
 const DetailInfo = () => {
   const { id, category } = useParams();
 
+  const reviews = [
+    {
+      title: '임시후기1',
+      url: 'https://www.naver.com/',
+      site: 'naver'
+    },
+    {
+      title: '임시후기2',
+      url: 'https://www.google.com/',
+      site: 'tistory'
+    }
+  ];
   const data = {
     information_id: 11,
     information_title: 'SOPT',
@@ -62,6 +65,15 @@ const DetailInfo = () => {
           hideText={'지원자격'}
         />
         <HashTag fields={data.fields} />
+
+        {reviews.map((review, idx) => (
+          <Review
+            key={idx}
+            title={review.title}
+            site={review.site}
+            url={review.url}
+          />
+        ))}
 
         <div className="DetailInfo__SpeechBubble">
           <SpeechBubbleLeft text={'모집일자는 변경될 수 있습니다 '} />

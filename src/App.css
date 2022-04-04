@@ -164,3 +164,21 @@ body {
 }
 
 /*TODO: 변수명 맞추기 */
+
+/*Reviews*/
+.Review {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.Review__img {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+
+.Review__title {
+  margin-right: 30px;
+  cursor: pointer;
+}
