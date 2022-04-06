@@ -15,8 +15,8 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ToolTip from './ToolTip';
 export default function MyCard({
   category,
-  id,
-  title,
+  information_Id,
+  information_title,
   logo,
   recruitment_period,
   fields
@@ -32,11 +32,11 @@ export default function MyCard({
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={<Avatar alt="avatar" sx={{ bgcolor: red[500] }} src={logo} />}
-          title={title}
+          title={information_title}
           subheader={
             <ToolTip titleText={recruitment_period} hideText={'모집기간'} />
           }
-          onClick={() => navigate(`/detailinfo/${category}/${id}`)}
+          onClick={() => navigate(`/detailinfo/${category}/${information_Id}`)}
         />
         <CardContent>
           <HashTag fields={fields} />
@@ -46,7 +46,7 @@ export default function MyCard({
             {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
           <IconButton aria-label="share">
-            <KakaoShareButton title={title} imgUrl={logo} />
+            <KakaoShareButton title={information_title} imgUrl={logo} />
           </IconButton>
         </CardActions>
       </Card>
@@ -55,8 +55,8 @@ export default function MyCard({
 }
 
 MyCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
+  information_Id: PropTypes.number.isRequired,
+  information_title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   recruitment_period: PropTypes.string.isRequired,
   fields: PropTypes.array.isRequired
