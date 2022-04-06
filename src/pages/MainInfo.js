@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AppLayout from '../components/AppLayout';
 import Contents from '../components/Contents';
 import Category from '../components/Category';
+import { request } from '../components/config/axios';
+
 const MainInfo = () => {
   const categories = [
     {
@@ -25,57 +27,71 @@ const MainInfo = () => {
       name: '국비지원'
     }
   ];
-  const club = [
-    {
-      id: 1,
-      title: '프로그라피',
-      siteUrl: 'https://prography.org/',
-      logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-      recruitment_period: '3,4월',
-      activity_period: '5개월',
-      qualifications: ['대학생', '직장인'],
-      fields: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
-      details: '활동비 10만원'
-    },
-    {
-      id: 2,
-      title: 'YAPP',
-      siteUrl: 'https://prography.org/',
-      logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-      recruitment_period: '3,9월',
-      activity_period: '4개월',
-      qualifications: ['대학생', '직장인'],
-      fields: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
-      details: '디테일!!'
-    },
-    {
-      id: 3,
-      title: 'YAPP321312',
-      siteUrl: 'https://prography.org/',
-      logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-      recruitment_period: '3,9월',
-      activity_period: '4개월',
-      qualifications: ['대학생', '직장인'],
-      fields: ['프론트엔드', '백엔드', '디자이너', 'ios', '안드로이드'],
-      details: '디테일!231!'
-    }
-  ];
+  useEffect(() => {
+    const getClubData = async () => {
+      await request
+        .get('/main-info/club')
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => setClub(data))
+        .catch((e) => console.log(e));
+    };
 
-  const kdt = [
-    {
-      id: 1,
-      title: '프로그래머스 웹 데브코스',
-      siteUrl: 'https://prography.org/',
-      logo: 'https://user-images.githubusercontent.com/72402747/159286868-9c8ae539-7fb9-4c67-87e9-cf32708143c6.png',
-      recruitment_period: '2-3월',
-      activity_period: '5개월',
-      qualifications: ['대학생', '직장인'],
-      fields: ['프론트엔드', '백엔드'],
-      details: '하루 5시간 코어타임 있음'
-    }
-  ];
+    const getKdtData = async () => {
+      await request
+        .get('/main-info/kdt')
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => setKdt(data))
+        .catch((e) => console.log(e));
+    };
+
+    const getSeminarData = async () => {
+      await request
+        .get('/main-info/seminar')
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => setSeminar(data))
+        .catch((e) => console.log(e));
+    };
+
+    const getEducationData = async () => {
+      await request
+        .get('/main-info/education')
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => setEducation(data))
+        .catch((e) => console.log(e));
+    };
+
+    const getCertificate = async () => {
+      await request
+        .get('/main-info/certificate')
+        .then((res) => {
+          return res.data;
+        })
+        .then((data) => setCertificate(data))
+        .catch((e) => console.log(e));
+    };
+
+    getClubData();
+    getKdtData();
+    getSeminarData();
+    getCertificate();
+    getEducationData();
+  }, []);
 
   const [chosenCategory, setChosenCategory] = useState('club');
+  const [club, setClub] = useState([]);
+  const [education, setEducation] = useState([]);
+  const [seminar, setSeminar] = useState([]);
+  const [certificate, setCertificate] = useState([]);
+  const [kdt, setKdt] = useState([]);
+
   useEffect(() => {
     console.log(chosenCategory);
   }, [chosenCategory]);
@@ -88,6 +104,15 @@ const MainInfo = () => {
         />
         {chosenCategory === 'club' && (
           <Contents data={club} category={chosenCategory} />
+        )}
+        {chosenCategory === 'certificate' && (
+          <Contents data={certificate} category={chosenCategory} />
+        )}
+        {chosenCategory === 'seminar' && (
+          <Contents data={seminar} category={chosenCategory} />
+        )}
+        {chosenCategory === 'education' && (
+          <Contents data={education} category={chosenCategory} />
         )}
         {chosenCategory === 'kdt' && (
           <Contents data={kdt} category={chosenCategory} />
