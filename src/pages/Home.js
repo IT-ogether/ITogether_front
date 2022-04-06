@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
 import AppLayout from '../components/AppLayout';
-import HomeTitle from '../components/HomeTitle';
+import HomeScrolls from '../components/HomeScrolls';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const Home = () => {
   return (
-    <AppLayout>
+    <div>
+      <Header />
       <div>
-        <HomeTitle />
+        <HomeScrolls />
       </div>
-    </AppLayout>
+    </div>
   );
 };
 export default Home;
