@@ -4,9 +4,11 @@ import Tooltip from '@mui/material/Tooltip';
 
 const ToolTip = ({ hideText, titleText }) => {
   return (
-    <Tooltip disableFocusListener disableTouchListener title={hideText}>
-      <Button>{titleText}</Button>
-    </Tooltip>
+    <div>
+      <Tooltip disableFocusListener disableTouchListener title={hideText}>
+        <Button>{titleText}</Button>
+      </Tooltip>
+    </div>
   );
 };
 
