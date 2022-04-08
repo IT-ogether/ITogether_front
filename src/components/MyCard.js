@@ -15,7 +15,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ToolTip from './ToolTip';
 export default function MyCard({
   category,
-  information_Id,
+  information_id,
   information_title,
   logo,
   recruitment_period,
@@ -36,7 +36,7 @@ export default function MyCard({
           subheader={
             <ToolTip titleText={recruitment_period} hideText={'모집기간'} />
           }
-          onClick={() => navigate(`/detailinfo/${category}/${information_Id}`)}
+          onClick={() => navigate(`/detailinfo/${category}/${information_id}`)}
         />
         <CardContent>
           <HashTag fields={fields} />

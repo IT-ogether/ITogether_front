@@ -4,7 +4,7 @@ const Contents = ({ data, category }) => {
   return (
     <div className="Contents">
       {data.map((it) => (
-        <MyCard key={it.information_Id} {...it} category={category} />
+        <MyCard key={it.information_id} {...it} category={category} />
       ))}
     </div>
   );

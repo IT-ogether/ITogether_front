@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Button } from '@mui/material';
 const HashTag = ({ fields }) => {
+  console.log(fields);
   return (
     <Box>
       {fields.map((it) => (

@@ -19,7 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/maininfo" element={<MainInfo />} />
-          <Route path="/detailinfo/:category/:id" element={<DetailInfo />} />
+          <Route
+            path="/detailinfo/:category/:information_id"
+            element={<DetailInfo />}
+          />
           <Route path="/oauth/kakao/callback" element={<Auth />} />
         </Routes>
       </BrowserRouter>
