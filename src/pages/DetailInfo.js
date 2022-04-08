@@ -14,7 +14,7 @@ const DetailInfo = () => {
   const [reviews, setReviews] = useState([]);
 
   //TODO : 서버에서 수정해주시면 바뀌어야하는 부분
-  // const [data, setData] = useState();
+  const [data, setData] = useState({});
 
   useEffect(() => {
     const getDetailInfo = async () => {
@@ -25,24 +25,23 @@ const DetailInfo = () => {
         })
         .then((result) => {
           setReviews(result.reviews);
-
-          console.log(result);
+          setData(result[`detail-info`][0]);
         });
     };
     getDetailInfo();
   }, []);
 
-  const data = {
-    information_id: 11,
-    information_title: 'SOPT',
-    site_url: 'http://sopt.org/wp/',
-    logo: 'http://sopt.org/wp/wp-content/uploads/2014/01/30_sopt_logo-1.png',
-    recruitment_period: '3월, 9월',
-    activity_period: '4개월',
-    qualifications: ['수도권 내 대학생'],
-    fields: ['프론트엔드', '백엔드', 'ios', '안드로이드', '디자이너'],
-    details: '디테일s'
-  };
+  // const data = {
+  //   information_id: 11,
+  //   information_title: 'SOPT',
+  //   site_url: 'http://sopt.org/wp/',
+  //   logo: 'http://sopt.org/wp/wp-content/uploads/2014/01/30_sopt_logo-1.png',
+  //   recruitment_period: '3월, 9월',
+  //   activity_period: '4개월',
+  //   qualifications: ['수도권 내 대학생'],
+  //   fields: ['프론트엔드', '백엔드', 'ios', '안드로이드', '디자이너'],
+  //   details: '디테일s'
+  // };
 
   //TODO: 카테고리별 id를 주면 그에 해당하는 데이터 받아옴
 
@@ -53,14 +52,12 @@ const DetailInfo = () => {
           <div>
             <img className="DetailInfo__header__img" src={data.logo} />
           </div>
-          <div className="DetailInfo__header__title">
-            {data.information_title}
-          </div>
+          <div className="DetailInfo__header__title">{data.title}</div>
         </div>
 
         <Button
           onClick={() => {
-            window.open(`${data.site_url}`, '_blank');
+            window.open(`${data.url}`, '_blank');
           }}
         >
           사이트 바로가기
@@ -70,12 +67,16 @@ const DetailInfo = () => {
           hideText={'모집기간'}
         />
 
-        <ToolTip
-          titleText={`지원자격 | ${data.qualifications}`}
-          hideText={'지원자격'}
-        />
-        <HashTag fields={data.fields} />
+        {data.qualification && (
+          <ToolTip
+            titleText={`지원자격 | ${data.qualification}`}
+            hideText={'지원자격'}
+          />
+        )}
 
+        {data.fields && <HashTag fields={data.fields} />}
+
+        <hr />
         {reviews &&
           reviews.map((review, idx) => (
             <Review
