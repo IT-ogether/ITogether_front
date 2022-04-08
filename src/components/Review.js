@@ -6,7 +6,11 @@ const Review = ({ site, title, url }) => {
     },
     {
       site: 'tistory',
-      logo: '../images/logo_naver'
+      logo: '../images/logo_tistory'
+    },
+    {
+      site: 'velog',
+      logo: '../images/logo_velog'
     }
   ];
   return (
