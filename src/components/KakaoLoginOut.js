@@ -14,8 +14,8 @@ const KakaoLoginOut = () => {
   };
 
   const logoutOnClick = async () => {
-    localStorage.removeItem('isLogin');
-    setBtnText((btnText) => 'LOGIN');
+    localStorage.removeItem('nickName');
+    localStorage.removeItem('email');
   };
 
   return (
@@ -23,7 +23,7 @@ const KakaoLoginOut = () => {
       <Button
         variant="outlined"
         onClick={() =>
-          localStorage.getItem('isLogin') === null
+          localStorage.getItem('nickName') === null
             ? longinOnClick()
             : logoutOnClick()
         }
