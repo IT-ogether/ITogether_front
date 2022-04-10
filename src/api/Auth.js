@@ -9,15 +9,14 @@ const Auth = () => {
     const authCode = qs.stringify({
       code: prop
     });
-    console.log(authCode);
     try {
       const response = await axios.post(
-        'https://adb9-211-202-56-254.ngrok.io/oauth/kakao/login',
+        process.env.REACT_APP_URL + '/oauth/kakao/login',
         authCode
       );
-      console.log(
-        response.data.email + response.data.memberId + response.data.nickname
-      );
+      localStorage.setItem('nickName', response.data.nickName);
+      localStorage.setItem('email', response.data.email);
+      console.log(response.data.email + response.data.nickName);
     } catch (error) {
       console.log(error);
     }
@@ -28,8 +27,6 @@ const Auth = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const code = new URL(window.location.href).searchParams.get('code');
-    console.log(code);
-    localStorage.setItem('isLogin', 'true');
     navigate('/');
 
     postCode(code);
