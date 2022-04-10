@@ -14,7 +14,6 @@ const KakaoLoginOut = () => {
   };
 
   const logoutOnClick = async () => {
-    await window.Kakao.API.request({ url: '/v1/user/unlink' });
     localStorage.removeItem('isLogin');
     setBtnText((btnText) => 'LOGIN');
   };
