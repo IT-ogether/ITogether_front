@@ -1,6 +1,8 @@
 #root {
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --color-main: #d9ebe8;
+  --color-highlight: #e8c8ed;
 }
 
 body {
@@ -27,18 +29,22 @@ body {
 
 /*Header*/
 .Header {
-  z-index: absolute;
+  z-index: 10;
   width: 100%;
   right: 0;
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 10px;
-  background-color: blanchedalmond;
+  padding: 10px 0;
+  box-sizing: border-box;
+
+  cursor: pointer;
+  background-color: var(--color-main);
 }
 
 .Header__logo {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
