@@ -15,10 +15,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ToolTip from './ToolTip';
 export default function MyCard({
   category,
-  information_id,
-  information_title,
+  informationId,
+  title,
   logo,
-  recruitment_period,
+  recruitmentPeriod,
   fields
 }) {
   const [liked, setLiked] = useState(false);
@@ -32,11 +32,11 @@ export default function MyCard({
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={<Avatar alt="avatar" sx={{ bgcolor: red[500] }} src={logo} />}
-          title={information_title}
+          title={title}
           subheader={
-            <ToolTip titleText={recruitment_period} hideText={'모집기간'} />
+            <ToolTip titleText={recruitmentPeriod} hideText={'모집기간'} />
           }
-          onClick={() => navigate(`/detailinfo/${category}/${information_id}`)}
+          onClick={() => navigate(`/detailinfo/${category}/${informationId}`)}
         />
         <CardContent>
           <HashTag fields={fields} />
@@ -46,7 +46,7 @@ export default function MyCard({
             {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
           <IconButton aria-label="share">
-            <KakaoShareButton title={information_title} imgUrl={logo} />
+            <KakaoShareButton title={title} imgUrl={logo} />
           </IconButton>
         </CardActions>
       </Card>
@@ -55,9 +55,9 @@ export default function MyCard({
 }
 
 MyCard.propTypes = {
-  information_Id: PropTypes.number.isRequired,
-  information_title: PropTypes.string.isRequired,
+  informationId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
-  recruitment_period: PropTypes.string.isRequired,
+  recruitmentPeriod: PropTypes.string.isRequired,
   fields: PropTypes.array.isRequired
 };

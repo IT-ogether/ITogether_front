@@ -104,7 +104,7 @@ body {
   padding: 8px;
   margin: 20px 0;
   position: relative;
-  background: #cc8af0;
+  background: var(--color-highlight);
   display: flex;
   align-items: center;
   justify-content: center;
