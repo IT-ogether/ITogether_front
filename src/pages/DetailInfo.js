@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 import SpeechBubbleLeft from '../components/SpeechBubble/SpeechBubbleLeft';
 import SpeechBubbleRight from '../components/SpeechBubble/SpeechBubbleRight';
 import Review from '../components/Review';
-import { Box, Button, Container } from '@mui/material';
+import { Button } from '@mui/material';
 import { request } from '../components/config/axios';
 
 const DetailInfo = () => {
-  const { information_id, category } = useParams();
+  const { informationId, category } = useParams();
   const [reviews, setReviews] = useState([]);
 
   //TODO : 서버에서 수정해주시면 바뀌어야하는 부분
@@ -19,29 +19,17 @@ const DetailInfo = () => {
   useEffect(() => {
     const getDetailInfo = async () => {
       await request
-        .get(`/detail-info/${category}/${information_id}`)
+        .get(`/detail-info/${category}/${informationId}`)
         .then((res) => {
           return res.data;
         })
         .then((result) => {
           setReviews(result.reviews);
-          setData(result[`detail-info`][0]);
+          setData(result.detailInfo);
         });
     };
     getDetailInfo();
   }, []);
-
-  // const data = {
-  //   information_id: 11,
-  //   information_title: 'SOPT',
-  //   site_url: 'http://sopt.org/wp/',
-  //   logo: 'http://sopt.org/wp/wp-content/uploads/2014/01/30_sopt_logo-1.png',
-  //   recruitment_period: '3월, 9월',
-  //   activity_period: '4개월',
-  //   qualifications: ['수도권 내 대학생'],
-  //   fields: ['프론트엔드', '백엔드', 'ios', '안드로이드', '디자이너'],
-  //   details: '디테일s'
-  // };
 
   //TODO: 카테고리별 id를 주면 그에 해당하는 데이터 받아옴
 
@@ -57,13 +45,13 @@ const DetailInfo = () => {
 
         <Button
           onClick={() => {
-            window.open(`${data.url}`, '_blank');
+            window.open(`${data.siteUrl}`, '_blank');
           }}
         >
           사이트 바로가기
         </Button>
         <ToolTip
-          titleText={`모집기간 | ${data.recruitment_period}`}
+          titleText={`모집기간 | ${data.recruitmentPeriod}`}
           hideText={'모집기간'}
         />
 

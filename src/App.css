@@ -42,7 +42,6 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   background-color: var(--color-main);
-  align-items: center;
 }
 
 .Header__logo {
