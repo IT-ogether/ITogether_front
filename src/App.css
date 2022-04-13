@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+
 #root {
   background-color: white;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -37,7 +40,6 @@ body {
   justify-content: space-between;
   padding: 10px 0;
   box-sizing: border-box;
-
   cursor: pointer;
   background-color: var(--color-main);
 }
@@ -68,10 +70,27 @@ body {
 /*Home*/
 .Home {
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 30px;
 }
 
+.Home_Title {
+  font-size: 120px;
+  font-family: 'do hyeon';
+  color: #97c2bb;
+  text-shadow: 0.5px 0.5px 0.5px gray;
+}
+
+.Home_SubTitle {
+  font-size: 47px;
+  font-family: 'do hyeon';
+  color: #a7ccc6;
+}
+.Home_Text {
+  padding-top: 70px;
+  font-size: 30px;
+  padding-bottom: 40px;
+  font-family: 'do hyeon';
+  color: #9e9e9e;
+}
 /*detailinfo*/
 
 .DetailInfo__header {
@@ -180,7 +199,7 @@ body {
 .slide-section {
 }
 
-.slide-common {
+.Section1 {
   width: 100%;
   height: 100%;
   display: flex;
@@ -189,11 +208,121 @@ body {
   font-size: 20px;
 }
 
-.section1 {
+.Section2 {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-main);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.section2 {
+.Section2_Img {
+  display: flex;
+  height: 600px;
 }
 
-.section3 {
+.Section2_Text {
+  display: flex;
+  padding-left: 30px;
+  color: #fafafa;
+  font-size: 50px;
+  font-family: 'do hyeon';
+  text-shadow: 1px 1px 1px gray;
+}
+
+.Section3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Section3_Title {
+  font-size: 40px;
+  font-family: 'Do Hyeon', sans-serif;
+  color: #474747;
+}
+
+.Section4 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Section4_Text {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/*Swiper*/
+.Swiper {
+  width: 60%;
+  height: 75%;
+  border: 1px solid var(--color-main);
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.Swiper_Data {
+  width: 100%;
+  height: 100%;
+}
+
+.Swiper_Data img {
+  overflow: hidden;
+  width: 40%;
+  height: 40%;
+  padding-bottom: 5px;
+}
+
+.Swiper_Text {
+  align-items: center;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.Swiper_SubTitle {
+  color: #404040;
+  padding-top: 12px;
+  font-size: 25px;
+  font-family: 'do hyeon';
+}
+
+.Swiper_Button {
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 2px solid #a7c2c9;
+  color: #a7c2c9;
+}
+
+.Swiper_SubText {
+  font-size: 15px;
+  color: #595959;
+  font-family: 'jua';
+}
+/*Profile*/
+.Profile_Login {
+  display: flex;
+  flex-direction: row;
+}
+
+.Profile {
+  padding-top: 100px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 100px;
 }
