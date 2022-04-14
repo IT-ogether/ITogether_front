@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import UserProfile from './UserProfile';
 
 const KakaoLoginOut = () => {
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
@@ -9,6 +10,11 @@ const KakaoLoginOut = () => {
   const [btnText, setBtnText] = useState(
     localStorage.getItem('JWT_TOKEN') === null ? 'LOGIN' : 'LOGOUT'
   );
+
+  const [visible, setVisible] = useState(
+    localStorage.getItem('JWT_TOKEN') === null ? false : true
+  );
+
   const longinOnClick = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
@@ -16,10 +22,12 @@ const KakaoLoginOut = () => {
   const logoutOnClick = async () => {
     localStorage.removeItem('JWT_TOKEN');
     setBtnText((btnText) => 'LOGIN');
+    setVisible((visible) => false);
   };
 
   return (
-    <div>
+    <div className="Login_Profile">
+      {visible === true ? <UserProfile /> : null}
       <Button
         variant="outlined"
         onClick={() =>

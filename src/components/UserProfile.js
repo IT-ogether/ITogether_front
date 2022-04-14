@@ -1,7 +1,7 @@
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import { colors } from '@mui/material';
 import { Link } from 'react-router-dom';
-const Profiles = () => {
+const UserProfile = () => {
   return (
     <div>
       <Link to="/profile">
@@ -11,4 +11,4 @@ const Profiles = () => {
   );
 };
 
-export default Profiles;
+export default UserProfile;
