@@ -32,6 +32,7 @@ const Auth = () => {
   };
 
   useEffect(() => {
+    console.log('HI');
     getToken();
   }, []);
 

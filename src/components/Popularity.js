@@ -59,7 +59,7 @@ const Popularity = () => {
 
   let i = 0;
   const dataList = datas.map((data) => (
-    <SwiperSlide>
+    <SwiperSlide key={i}>
       <br />
       <div className="Swiper_Data">
         <img src={data.logo}></img>

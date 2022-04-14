@@ -1,35 +1,42 @@
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { LoginDispatchContext } from '../App';
 
-const KakaoLoginOut = () => {
+const KakaoLoginOut = ({ login }) => {
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
+
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-  const [btnText, setBtnText] = useState(
-    localStorage.getItem('JWT_TOKEN') === null ? 'LOGIN' : 'LOGOUT'
-  );
+  const navigate = useNavigate();
+
+  const { r_logout, r_login } = useContext(LoginDispatchContext);
+
   const longinOnClick = () => {
     window.location.href = KAKAO_AUTH_URL;
+    navigate('/maininfo');
   };
 
-  const logoutOnClick = async () => {
-    localStorage.removeItem('JWT_TOKEN');
-    setBtnText((btnText) => 'LOGIN');
-  };
+  useEffect(() => {
+    console.log('login');
+    console.log(login);
+  });
 
   return (
     <div>
-      <Button
-        variant="outlined"
-        onClick={() =>
-          localStorage.getItem('JWT_TOKEN') === null
-            ? longinOnClick()
-            : logoutOnClick()
-        }
-      >
-        {btnText}
-      </Button>
+      {login ? (
+        <Button onClick={() => r_logout(login)}>LOGOUT</Button>
+      ) : (
+        <Button
+          onClick={() => {
+            window.location.href = KAKAO_AUTH_URL;
+          }}
+        >
+          LOGIN/SIGNIN
+        </Button>
+      )}
     </div>
   );
 };

@@ -1,7 +1,11 @@
 import KakaoLoginOut from './KakaoLoginOut';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { LoginContext } from '../App';
+
 //TODO : 추후 검색창 추가
 const Header = () => {
+  const login = useContext(LoginContext);
   const navigate = useNavigate();
   const hanldeLogoClick = (e) => {
     navigate('/maininfo');
@@ -15,7 +19,7 @@ const Header = () => {
         />
       </div>
       <div>
-        <KakaoLoginOut />
+        <KakaoLoginOut login={login} />
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const HomeTitle = () => {
         </div>
       </div>
       <div className="mainInfoBtn">
-        <Link to="./MainInfo" style={{ textDecoration: 'none' }}>
+        <Link to="./maininfo" style={{ textDecoration: 'none' }}>
           <Button variant="outlined">goTo mainInfo</Button>
         </Link>
       </div>

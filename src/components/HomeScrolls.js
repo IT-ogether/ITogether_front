@@ -2,7 +2,6 @@ import HomeTitle from './HomeTitle';
 import { FullPage, Slide } from 'react-full-page';
 import Footer from './Footer';
 import Popularity from './Popularity';
-import Introduce from './Introduce';
 
 const HomeScrolls = () => {
   return (
