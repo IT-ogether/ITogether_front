@@ -92,6 +92,15 @@ const MainInfo = () => {
   const [certificate, setCertificate] = useState([]);
   const [kdt, setKdt] = useState([]);
 
+  const getDataByCategory = (category) => {
+    if (category === 'certificate') return certificate;
+    else if (category === 'club') return club;
+    else if (category === 'seminar') return seminar;
+    else if (category === 'education') return education;
+    else if (category === 'kdt') return kdt;
+    else if (category === 'certificate') return certificate;
+  };
+
   useEffect(() => {
     console.log(chosenCategory);
   }, [chosenCategory]);
@@ -102,30 +111,11 @@ const MainInfo = () => {
           categories={categories}
           setChosenCategory={setChosenCategory}
         />
-        {chosenCategory === 'club' && (
-          <Contents data={club} category={chosenCategory} />
-        )}
-        {chosenCategory === 'certificate' && (
-          <Contents data={certificate} category={chosenCategory} />
-        )}
-        {chosenCategory === 'seminar' && (
-          <Contents data={seminar} category={chosenCategory} />
-        )}
-        {chosenCategory === 'education' && (
-          <Contents data={education} category={chosenCategory} />
-        )}
-        {chosenCategory === 'kdt' && (
-          <Contents data={kdt} category={chosenCategory} />
-        )}
-        {chosenCategory === 'kdt' && (
-          <Contents data={kdt} category={chosenCategory} />
-        )}
-        {chosenCategory === 'kdt' && (
-          <Contents data={kdt} category={chosenCategory} />
-        )}
-        {chosenCategory === 'kdt' && (
-          <Contents data={kdt} category={chosenCategory} />
-        )}
+
+        <Contents
+          data={getDataByCategory(chosenCategory)}
+          category={chosenCategory}
+        />
       </div>
     </AppLayout>
   );

@@ -24,7 +24,6 @@ const DetailInfo = () => {
           return res.data;
         })
         .then((result) => {
-          console.log(result);
           setReviews(result.reviews);
           setData(result.detailInfo);
         });
@@ -32,14 +31,16 @@ const DetailInfo = () => {
     getDetailInfo();
   }, []);
 
-  //TODO: 카테고리별 id를 주면 그에 해당하는 데이터 받아옴
-
   return (
     <AppLayout>
       <div className="DetailInfo">
         <div className="DetailInfo__header">
           <div>
-            <img className="DetailInfo__header__img" src={data.logo} />
+            <img
+              className="DetailInfo__header__img"
+              alt="logoImg"
+              src={data.logo}
+            />
           </div>
           <div className="DetailInfo__header__title">{data.title}</div>
         </div>
