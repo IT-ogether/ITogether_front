@@ -10,7 +10,7 @@ import Profile from './pages/Profile';
 const loginreducer = (state, action) => {
   switch (action.type) {
     case 'INIT': {
-      const ret = window.localStorage.getItem('JWT_TOKEN') ? true : false;
+      const ret = window.localStorage.getItem('jwtAccessToken') ? true : false;
       return ret;
     }
     case 'TOGGLELOGIN': {
@@ -32,7 +32,7 @@ function App() {
   const kakao = window.Kakao;
   useEffect(() => {
     async function getLocalLogin() {
-      const localLogin2 = localStorage.getItem('JWT_TOKEN');
+      const localLogin2 = localStorage.getItem('jwtAccessToken');
       return localLogin2;
     }
     const localLogin = getLocalLogin();
@@ -49,7 +49,7 @@ function App() {
   };
 
   const r_logout = (state) => {
-    window.localStorage.removeItem('JWT_TOKEN');
+    window.localStorage.removeItem('jwtAccessToken');
     dispatch({ type: 'LOGOUT', data: state });
   };
 
