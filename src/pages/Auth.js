@@ -17,9 +17,13 @@ const Auth = () => {
     try {
       await axios
         .post(process.env.REACT_APP_URL + '/oauth/kakao/login?code=' + code)
-        .then((res) =>
-          localStorage.setItem('JWT_TOKEN', res.data.jwtAccessToken)
-        )
+        .then((res) => {
+          localStorage.setItem('accessToken', res.headers['jwtaccesstoken']);
+          localStorage.setItem(
+            'refreshTokenIndex',
+            res.headers['refreshtokenindex']
+          );
+        })
         .then(() => {
           r_login(login);
           navigate('/');
