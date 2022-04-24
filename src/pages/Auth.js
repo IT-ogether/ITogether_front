@@ -18,7 +18,7 @@ const Auth = () => {
       await axios
         .post(process.env.REACT_APP_URL + '/oauth/kakao/login?code=' + code)
         .then((res) => {
-          localStorage.setItem('jwtAccessToken', res.headers['jwtaccesstoken']);
+          localStorage.setItem('accessToken', res.headers['jwtaccesstoken']);
           localStorage.setItem(
             'refreshTokenIndex',
             res.headers['refreshtokenindex']
