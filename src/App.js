@@ -6,6 +6,7 @@ import MainInfo from './pages/MainInfo';
 import DetailInfo from './pages/DetailInfo';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 const loginreducer = (state, action) => {
   switch (action.type) {
@@ -59,6 +60,7 @@ function App() {
         <div className="App">
           <BrowserRouter>
             <Routes>
+              <Route path="*" element={<NotFound />} />
               <Route path="/" element={<Home />} />
               <Route path="/maininfo" element={<MainInfo />} />
               <Route
