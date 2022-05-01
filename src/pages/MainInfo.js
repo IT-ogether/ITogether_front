@@ -3,6 +3,7 @@ import AppLayout from '../components/AppLayout';
 import Contents from '../components/Contents';
 import Category from '../components/Category';
 import { request } from '../components/config/axios';
+import Recommend from '../components/recommend/Recommend';
 
 const MainInfo = () => {
   const categories = [
@@ -116,6 +117,9 @@ const MainInfo = () => {
           data={getDataByCategory(chosenCategory)}
           category={chosenCategory}
         />
+      </div>
+      <div>
+        <Recommend />
       </div>
     </AppLayout>
   );
