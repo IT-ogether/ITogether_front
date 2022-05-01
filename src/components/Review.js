@@ -15,7 +15,7 @@ const Review = ({ site, title, url }) => {
     },
     {
       site: 'velog',
-      logo: '/images/logo_velog.png'
+      logo: '/images/logo_velog.jpeg'
     }
   ];
   return (
