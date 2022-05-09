@@ -31,6 +31,7 @@ const MainInfo = () => {
   ];
 
   const setPaginationProps = (totalCount, perPageNum) => {
+    console.log('totalCOunt' + totalCount + 'perPageNum:' + perPageNum);
     setTmpPage(Math.ceil(totalCount / perPageNum));
   };
 
@@ -74,6 +75,9 @@ const MainInfo = () => {
     getData();
   }, [chosenCategory]);
 
+  useEffect(() => {
+    getData();
+  }, [currentPage]);
   return (
     <AppLayout>
       <div>
