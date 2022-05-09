@@ -94,6 +94,7 @@ const MainInfo = () => {
         />
       </div>
       <div>{/* <Recommend /> */}</div>
+
     </AppLayout>
   );
 };
