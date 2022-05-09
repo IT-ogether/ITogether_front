@@ -30,15 +30,8 @@ const MainInfo = () => {
     }
   ];
 
-  const setPaginationProps = (data) => {
-    const { totalCount, displayPageNum } = data;
-    console.log(totalCount, displayPageNum);
-    const tmpPage = parseInt(totalCount / displayPageNum);
-    totalCount % displayPageNum === 0
-      ? setTotalPage((tmpPage) => {
-          return tmpPage;
-        })
-      : setTotalPage(tmpPage + 1);
+  const setPaginationProps = (totalCount, perPageNum) => {
+    setTmpPage(Math.ceil(totalCount / perPageNum));
   };
 
   const getData = async () => {
@@ -50,8 +43,11 @@ const MainInfo = () => {
         return res.data;
       })
       .then((data) => {
-        console.log(data);
-        setPaginationProps(data.pageDTO);
+        console.log(data.pageDTO.cri.perPageNum);
+        setPaginationProps(
+          data.pageDTO.totalCount,
+          data.pageDTO.cri.perPageNum
+        );
         setData(data.mainInfo);
       })
       .catch((e) => console.log(e));
@@ -61,21 +57,19 @@ const MainInfo = () => {
 
   const [chosenCategory, setChosenCategory] = useState('club');
   const [data, setData] = useState([]);
-  const [totalPage, setTotalPage] = useState(5);
+  const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [tmpPage, setTmpPage] = useState(1);
 
   const handlePageChange = (event, value) => {
-    console.log('value ', value);
     setCurrentPage(value);
-    console.log(`curentPage : `, currentPage);
   };
 
   useEffect(() => {
-    console.log(`curentPage : `, currentPage);
-  }, [handlePageChange]);
+    setTotalPage(tmpPage);
+  }, [handlePageChange, tmpPage]);
 
   useEffect(() => {
-    console.log(chosenCategory);
     setCurrentPage(1);
     getData();
   }, [chosenCategory]);
