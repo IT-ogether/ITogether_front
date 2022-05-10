@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Pagination from '@mui/material/Pagination';
 import AppLayout from '../components/AppLayout';
 import Contents from '../components/Contents';
 import Category from '../components/Category';
@@ -28,83 +29,55 @@ const MainInfo = () => {
       name: '국비지원'
     }
   ];
-  useEffect(() => {
-    const getClubData = async () => {
-      await request
-        .get('/main-info/club')
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => setClub(data))
-        .catch((e) => console.log(e));
-    };
 
-    const getKdtData = async () => {
-      await request
-        .get('/main-info/kdt')
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => setKdt(data))
-        .catch((e) => console.log(e));
-    };
+  const setPaginationProps = (totalCount, perPageNum) => {
+    console.log('totalCount' + totalCount + 'perPageNum:' + perPageNum);
+    setTmpPage(Math.ceil(totalCount / perPageNum));
+  };
 
-    const getSeminarData = async () => {
-      await request
-        .get('/main-info/seminar')
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => setSeminar(data))
-        .catch((e) => console.log(e));
-    };
+  const getData = async () => {
+    console.log('chosenCateogry', chosenCategory);
+    console.log('currentPage', currentPage);
+    await request
+      .get(`/main-info/${chosenCategory}?pageNum=${currentPage}`)
+      .then((res) => {
+        return res.data;
+      })
+      .then((data) => {
+        console.log(data.pageDTO.cri.perPageNum);
+        setPaginationProps(
+          data.pageDTO.totalCount,
+          data.pageDTO.cri.perPageNum
+        );
+        setData(data.mainInfo);
+      })
+      .catch((e) => console.log(e));
+  };
 
-    const getEducationData = async () => {
-      await request
-        .get('/main-info/education')
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => setEducation(data))
-        .catch((e) => console.log(e));
-    };
-
-    const getCertificate = async () => {
-      await request
-        .get('/main-info/certificate')
-        .then((res) => {
-          return res.data;
-        })
-        .then((data) => setCertificate(data))
-        .catch((e) => console.log(e));
-    };
-
-    getClubData();
-    getKdtData();
-    getSeminarData();
-    getCertificate();
-    getEducationData();
-  }, []);
+  useEffect(() => getData(), []);
 
   const [chosenCategory, setChosenCategory] = useState('club');
-  const [club, setClub] = useState([]);
-  const [education, setEducation] = useState([]);
-  const [seminar, setSeminar] = useState([]);
-  const [certificate, setCertificate] = useState([]);
-  const [kdt, setKdt] = useState([]);
+  const [data, setData] = useState([]);
+  const [totalPage, setTotalPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tmpPage, setTmpPage] = useState(1);
 
-  const getDataByCategory = (category) => {
-    if (category === 'certificate') return certificate;
-    else if (category === 'club') return club;
-    else if (category === 'seminar') return seminar;
-    else if (category === 'education') return education;
-    else if (category === 'kdt') return kdt;
-    else if (category === 'certificate') return certificate;
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   useEffect(() => {
-    console.log(chosenCategory);
+    setTotalPage(tmpPage);
+  }, [handlePageChange, tmpPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+    getData();
   }, [chosenCategory]);
+
+  useEffect(() => {
+    getData();
+  }, [currentPage]);
   return (
     <AppLayout>
       <div>
@@ -112,15 +85,16 @@ const MainInfo = () => {
           categories={categories}
           setChosenCategory={setChosenCategory}
         />
-
-        <Contents
-          data={getDataByCategory(chosenCategory)}
-          category={chosenCategory}
+        <Contents data={data} category={chosenCategory} />
+        <Pagination
+          page={currentPage}
+          onChange={handlePageChange}
+          count={totalPage}
+          color="primary"
         />
       </div>
-      <div>
-        <Recommend />
-      </div>
+      <div>{/* <Recommend /> */}</div>
+
     </AppLayout>
   );
 };
