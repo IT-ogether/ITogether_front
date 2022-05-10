@@ -31,7 +31,7 @@ const MainInfo = () => {
   ];
 
   const setPaginationProps = (totalCount, perPageNum) => {
-    console.log('totalCOunt' + totalCount + 'perPageNum:' + perPageNum);
+    console.log('totalCount' + totalCount + 'perPageNum:' + perPageNum);
     setTmpPage(Math.ceil(totalCount / perPageNum));
   };
 
