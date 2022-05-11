@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { LoginContext } from '../App';
 import { LoginDispatchContext } from '../App';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../actions';
 import axios from 'axios';
 
 const Auth = () => {
@@ -10,8 +12,8 @@ const Auth = () => {
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_KEY;
   const code = new URL(window.location.href).searchParams.get('code');
 
-  const login = useContext(LoginContext);
-  const { r_login } = useContext(LoginDispatchContext);
+  const isLogged = useSelector((state) => state.isLogged);
+  const dispatch = useDispatch();
 
   async function postCode() {
     try {
@@ -25,7 +27,8 @@ const Auth = () => {
           );
         })
         .then(() => {
-          r_login(login);
+          dispatch(login());
+          console.log(isLogged);
           navigate('/');
         });
     } catch (error) {

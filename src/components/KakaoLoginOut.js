@@ -1,42 +1,38 @@
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { LoginDispatchContext } from '../App';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../actions';
 
-const KakaoLoginOut = ({ login }) => {
+const KakaoLoginOut = () => {
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.isLogged);
+  const dispatch = useDispatch();
 
-  const { r_logout, r_login } = useContext(LoginDispatchContext);
-
-  const longinOnClick = () => {
-    window.location.href = KAKAO_AUTH_URL;
-    navigate('/maininfo');
+  const logoutClick = () => {
+    dispatch(logout());
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshTokenIndex');
   };
-
   useEffect(() => {
     console.log('login');
-    console.log(login);
+    console.log(isLogged);
   });
 
   return (
     <div>
-      {login ? (
-        <Button onClick={() => r_logout(login)}>LOGOUT</Button>
-      ) : (
-        <Button
-          onClick={() => {
-            window.location.href = KAKAO_AUTH_URL;
-          }}
-        >
-          LOGIN/SIGNIN
-        </Button>
-      )}
+      <Button
+        onClick={() => {
+          isLogged === false
+            ? (window.location.href = KAKAO_AUTH_URL)
+            : logoutClick();
+        }}
+      >
+        {isLogged === true ? 'LOGOUT' : 'LOGIN'}
+      </Button>
     </div>
   );
 };
