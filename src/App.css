@@ -314,7 +314,6 @@ body {
 /*Profile*/
 .Profile_Login {
   display: flex;
-  flex-direction: row;
 }
 
 .Profile {
@@ -325,4 +324,16 @@ body {
   flex-direction: column;
   align-items: center;
   padding-bottom: 100px;
+  justify-content: center;
+}
+
+.Profile__Img__Div {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+}
+
+.Profile__Img {
+  max-height: 100%;
+  margin-right: 5%;
 }
