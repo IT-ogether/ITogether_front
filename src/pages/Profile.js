@@ -28,9 +28,6 @@ const Profile = () => {
           setEmail((nickName) => response.data.email);
           setProfileImg((profileImage) => response.data.profileImage);
           setBookMarks((bookMakrs) => response.data.bookMark);
-        },
-        (error) => {
-          console.log(error);
         }
       )
       .catch((err) => {
