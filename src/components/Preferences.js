@@ -29,7 +29,7 @@ const Preferences = () => {
     }
   };
 
-  const printLists = (props) => {
+  const printData = (props) => {
     return (
       <div>
         <input
@@ -68,7 +68,7 @@ const Preferences = () => {
         <button onClick={saveClick}>저장</button>
       </div>
       <div className="HopeJob__CheckBox">
-        {dataLists.map((list) => printLists(list))}
+        {dataLists.map((list) => printData(list))}
       </div>
     </div>
   );
