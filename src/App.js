@@ -1,4 +1,5 @@
 import './App.css';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import React, { useCallback, useReducer, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
@@ -7,6 +8,34 @@ import DetailInfo from './pages/DetailInfo';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+
+const THEME = createTheme({
+  typography: {
+    fontFamily: ['jua', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        @font-face {
+          font-family: 'jua';
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+          src: local('jua'), local('jua'), 
+          url(https://fonts.googleapis.com/css2?family=Jua&display=swap) 
+          format('woff2');
+          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, 
+            U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, 
+            U+2215, U+FEFF, U+FFFD;
+        }
+      `
+    }
+  }
+});
 
 const loginreducer = (state, action) => {
   switch (action.type) {
@@ -55,25 +84,27 @@ function App() {
   };
 
   return (
-    <LoginContext.Provider value={login}>
-      <LoginDispatchContext.Provider value={{ r_login, r_logout }}>
-        <div className="App">
-          <BrowserRouter>
-            <Routes>
-              <Route path="*" element={<NotFound />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/maininfo" element={<MainInfo />} />
-              <Route
-                path="/detailinfo/:category/:informationId"
-                element={<DetailInfo />}
-              />
-              <Route path="/oauth/kakao/callback" element={<Auth />} />
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
-          </BrowserRouter>
-        </div>
-      </LoginDispatchContext.Provider>
-    </LoginContext.Provider>
+    <ThemeProvider theme={THEME}>
+      <LoginContext.Provider value={login}>
+        <LoginDispatchContext.Provider value={{ r_login, r_logout }}>
+          <div className="App">
+            <BrowserRouter>
+              <Routes>
+                <Route path="*" element={<NotFound />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/maininfo" element={<MainInfo />} />
+                <Route
+                  path="/detailinfo/:category/:informationId"
+                  element={<DetailInfo />}
+                />
+                <Route path="/oauth/kakao/callback" element={<Auth />} />
+                <Route path="/profile" element={<Profile />} />
+              </Routes>
+            </BrowserRouter>
+          </div>
+        </LoginDispatchContext.Provider>
+      </LoginContext.Provider>
+    </ThemeProvider>
   );
 }
 
