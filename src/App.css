@@ -38,7 +38,7 @@ body {
   position: fixed;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 10px 5rem;
   box-sizing: border-box;
   cursor: pointer;
   background-color: var(--color-main);
@@ -93,12 +93,18 @@ body {
 }
 /*detailinfo*/
 
+.DetailInfo{
+  margin-top:3rem;
+  font-family:'jua'
+}
+
 .DetailInfo__header {
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid gray;
 }
+
 
 .DetailInfo__header__img {
   width: 40px;

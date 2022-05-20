@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 const DUMMYDATA = {
-  name: 'ㅇㅇ',
+  name: '민석',
   category: '프론트엔드',
   recommends: [
     {
@@ -24,7 +24,9 @@ const Recommend = () => {
     <div
       style={{
         border: '1px solid gray',
-        padding: '10px'
+        padding: '10px 2rem',
+        fontFamily: 'jua',
+        borderRadius: '5px'
       }}
     >
       <div
@@ -33,6 +35,7 @@ const Recommend = () => {
         }}
       >
         {DUMMYDATA.name}님을 위한
+        <br />
         {DUMMYDATA.category} 활동들
       </div>
       {DUMMYDATA.recommends.map((recommend) => (
@@ -41,7 +44,8 @@ const Recommend = () => {
             border: '1px solid gray',
             padding: '10px',
             margin: '10px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            borderRadius: '5px'
           }}
           onClick={() =>
             navigate(

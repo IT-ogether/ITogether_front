@@ -5,6 +5,7 @@ import Contents from '../components/Contents';
 import Category from '../components/Category';
 import { request } from '../components/config/axios';
 import Recommend from '../components/recommend/Recommend';
+import Preferences from '../components/Preferences';
 
 const MainInfo = () => {
   const categories = [
@@ -81,6 +82,7 @@ const MainInfo = () => {
   return (
     <AppLayout>
       <div>
+        <Preferences />
         <Category
           categories={categories}
           setChosenCategory={setChosenCategory}
@@ -93,8 +95,9 @@ const MainInfo = () => {
           color="primary"
         />
       </div>
-      <div>{/* <Recommend /> */}</div>
-
+      <div>
+        <Recommend />
+      </div>
     </AppLayout>
   );
 };
