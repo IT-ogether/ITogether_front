@@ -47,6 +47,7 @@ const DetailInfo = () => {
         </div>
 
         <Button
+          style={{ fontFamily: 'jua' }}
           onClick={() => {
             window.open(`${data.siteUrl}`, '_blank');
           }}
@@ -54,12 +55,14 @@ const DetailInfo = () => {
           사이트 바로가기
         </Button>
         <ToolTip
+          style={{ fontFamily: 'jua' }}
           titleText={`모집기간 | ${data.recruitmentPeriod}`}
           hideText={'모집기간'}
         />
 
         {data.qualification && (
           <ToolTip
+            style={{ fontFamily: 'jua' }}
             titleText={`지원자격 | ${data.qualification}`}
             hideText={'지원자격'}
           />

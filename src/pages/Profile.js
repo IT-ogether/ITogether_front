@@ -21,15 +21,13 @@ const Profile = () => {
           token: accessToken
         }
       })
-      .then(
-        (response) => {
-          console.log(response);
-          setNickName((nickName) => response.data.nickName);
-          setEmail((nickName) => response.data.email);
-          setProfileImg((profileImage) => response.data.profileImage);
-          setBookMarks((bookMakrs) => response.data.bookMark);
-        }
-      )
+      .then((response) => {
+        console.log(response);
+        setNickName((nickName) => response.data.nickName);
+        setEmail((nickName) => response.data.email);
+        setProfileImg((profileImage) => response.data.profileImage);
+        setBookMarks((bookMakrs) => response.data.bookMark);
+      })
       .catch((err) => {
         console.log(err);
       });

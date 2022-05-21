@@ -31,6 +31,7 @@ export default function MyCard({
     <div className="MyCard">
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
+          style={{ fontFamily: 'jua' }}
           avatar={<Avatar alt="avatar" sx={{ bgcolor: red[500] }} src={logo} />}
           title={title}
           subheader={

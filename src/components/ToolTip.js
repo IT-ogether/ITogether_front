@@ -5,8 +5,13 @@ import Tooltip from '@mui/material/Tooltip';
 const ToolTip = ({ hideText, titleText }) => {
   return (
     <div>
-      <Tooltip disableFocusListener disableTouchListener title={hideText}>
-        <Button>{titleText}</Button>
+      <Tooltip
+        style={{ fontFamily: 'jua' }}
+        disableFocusListener
+        disableTouchListener
+        title={hideText}
+      >
+        <Button style={{ fontFamily: 'jua' }}>{titleText}</Button>
       </Tooltip>
     </div>
   );
