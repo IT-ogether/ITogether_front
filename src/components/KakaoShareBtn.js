@@ -9,8 +9,18 @@ const KakaoShareButton = ({ id, title, imgUrl }) => {
   console.log(process.env.REACT_APP_KAKAO_KEY);
 
   const shareKakao = async () => {
-    // TODO : 서버통신구현
-    await request.put(`/count/${id}`).then((res) => console.log(res));
+    await request
+      .put(
+        `/count/${id}`,
+        { body: null },
+        {
+          headers: {
+            token: window.localStorage.getItem('accessToken'),
+            'Content-type': 'text/html; charset=utf-8'
+          }
+        }
+      )
+      .then((res) => console.log(res));
 
     kakao.Link.sendDefault({
       objectType: 'feed',

@@ -15,6 +15,7 @@ const Header = () => {
         <img
           style={{ width: '100px', height: '30px' }}
           src="/images/logo_itogether.png"
+          alt="imgLogo"
         />
       </div>
       <div>
