@@ -1,13 +1,27 @@
 import React from 'react';
 import ShareIcon from '@mui/icons-material/Share';
+import { request } from '../components/config/axios';
 
-const KakaoShareButton = ({ title, imgUrl }) => {
+const KakaoShareButton = ({ id, title, imgUrl }) => {
   const kakao = window.Kakao;
 
   //확인용으로 남겨둡니다! js키에용
   console.log(process.env.REACT_APP_KAKAO_KEY);
 
-  const shareKakao = () => {
+  const shareKakao = async () => {
+    await request
+      .put(
+        `/count/${id}`,
+        { body: null },
+        {
+          headers: {
+            token: window.localStorage.getItem('accessToken'),
+            'Content-type': 'text/html; charset=utf-8'
+          }
+        }
+      )
+      .then((res) => console.log(res));
+
     kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
