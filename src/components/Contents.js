@@ -13,19 +13,19 @@ const Contents = ({ data, category }) => {
 
   const getBookMarks = async () => {
     await dispatch(getBookMarkAsyncThunk());
-    setIsLoded((state) => true);
+    setIsLoaded((state) => true);
   };
 
   useEffect(() => {
     if (localStorage.getItem('isLogged') !== null) {
       getBookMarks();
     } else {
-      setIsLoded((state) => true);
+      setIsLoaded((state) => true);
     }
   }, []);
   return (
     <div className="Contents">
-      {isLoded === true
+      {isLoaded === true
         ? data.map((it) => (
             <MyCard key={it.informationId} {...it} category={category} />
           ))
