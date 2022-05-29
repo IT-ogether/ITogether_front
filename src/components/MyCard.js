@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import KakaoShareButton from './KakaoShareBtn';
 import HashTag from './HashTag';
@@ -13,6 +13,9 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ToolTip from './ToolTip';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBookMarkAsyncThunk, delBookMarkAsyncThunk } from '../actions';
+
 export default function MyCard({
   category,
   informationId,
@@ -21,11 +24,44 @@ export default function MyCard({
   recruitmentPeriod,
   fields
 }) {
+  const bookMarks = useSelector((state) => state.bookMarks);
+  const dispatch = useDispatch();
+
   const [liked, setLiked] = useState(false);
-  const onToggleLike = () => {
-    setLiked((prev) => !prev);
+
+  const likedInit = () => {
+    console.log(bookMarks);
+    bookMarks.map((it) => {
+      if (informationId === it) {
+        console.log(it + 'liked!');
+        setLiked((state) => true);
+        return false;
+      }
+    });
+  };
+  const postBookMark = async () => {
+    console.log('add: ' + informationId);
+    dispatch(addBookMarkAsyncThunk(informationId));
   };
 
+  const delBookMark = async () => {
+    console.log('del: ' + informationId);
+    dispatch(delBookMarkAsyncThunk(informationId));
+  };
+  const onToggleLike = async () => {
+    if (localStorage.getItem('isLogged')) {
+      if (!liked) {
+        await postBookMark();
+      } else {
+        await delBookMark();
+      }
+      setLiked((prev) => !prev);
+    } else {
+      alert('로그인 해주세요!');
+    }
+  };
+
+  useEffect(() => likedInit(), []);
   const navigate = useNavigate();
   return (
     <div className="MyCard">

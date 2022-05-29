@@ -12,9 +12,6 @@ const Auth = () => {
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_KEY;
   const code = new URL(window.location.href).searchParams.get('code');
 
-  const isLogged = useSelector((state) => state.isLogged);
-  const dispatch = useDispatch();
-
   async function postCode() {
     try {
       await axios
@@ -27,8 +24,7 @@ const Auth = () => {
           );
         })
         .then(() => {
-          dispatch(login());
-          console.log(isLogged);
+          localStorage.setItem('isLogged', true);
           navigate('/');
         });
     } catch (error) {
