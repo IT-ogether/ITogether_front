@@ -1,14 +1,8 @@
-import LoggedReducer from './isLogged';
+import BookMarksReducer from './bookMarks';
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
-const loginPersistConfig = {
-  key: 'logged',
-  storage
-};
 const rootReducer = combineReducers({
-  isLogged: LoggedReducer
+  bookMarks: BookMarksReducer
 });
 
-export default persistReducer(loginPersistConfig, rootReducer);
+export default rootReducer;

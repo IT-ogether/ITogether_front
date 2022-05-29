@@ -6,8 +6,13 @@ import Category from '../components/Category';
 import { request } from '../components/config/axios';
 import Recommend from '../components/recommend/Recommend';
 import Preferences from '../components/Preferences';
+import { getBookMarkAsyncThunk } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { ConstructionOutlined, Store } from '@mui/icons-material';
 
 const MainInfo = () => {
+  const dispatch = useDispatch();
+  const [temp, setTemp] = useState();
   const categories = [
     {
       value: 'club',
@@ -79,6 +84,7 @@ const MainInfo = () => {
   useEffect(() => {
     getData();
   }, [currentPage]);
+
   return (
     <AppLayout>
       <div>
