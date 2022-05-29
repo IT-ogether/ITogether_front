@@ -7,25 +7,25 @@ import { getBookMarkAsyncThunk } from '../actions';
 
 const Contents = ({ data, category }) => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   console.log(data);
 
   const getBookMarks = async () => {
     await dispatch(getBookMarkAsyncThunk());
-    setLoading((state) => true);
+    setIsLoded((state) => true);
   };
 
   useEffect(() => {
     if (localStorage.getItem('isLogged') !== null) {
       getBookMarks();
     } else {
-      setLoading((state) => true);
+      setIsLoded((state) => true);
     }
   }, []);
   return (
     <div className="Contents">
-      {loading === true
+      {isLoded === true
         ? data.map((it) => (
             <MyCard key={it.informationId} {...it} category={category} />
           ))
