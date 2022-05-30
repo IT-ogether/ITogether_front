@@ -5,7 +5,7 @@ const Profiles = () => {
   return (
     <div>
       <Link to="/profile">
-        <AssignmentIndIcon />
+        <AssignmentIndIcon className="Profile__btn" />
       </Link>
     </div>
   );

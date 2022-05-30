@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { useState, useEffect } from 'react';
+import UserProfile from './UserProfile';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,7 +23,8 @@ const KakaoLoginOut = () => {
   });
 
   return (
-    <div>
+    <div className="Header__icon">
+      {isLogged === true ? <UserProfile /> : null}
       <Button
         onClick={() => {
           isLogged === false
