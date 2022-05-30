@@ -15,7 +15,7 @@ const Result = () => {
   const getCategoryData = async () => {
     console.log('category', category);
     await request
-      .get(`/main-info?field=${category}?pageNum=${currentPage}`, {
+      .get(`/main-info?field=${category}&pageNum=${currentPage}`, {
         headers: {
           'Content-Type': 'application/json; charset=utf-8'
         }
@@ -47,12 +47,23 @@ const Result = () => {
   };
 
   useEffect(() => {
+    getCategoryData();
+  }, [currentPage]);
+
+  useEffect(() => {
     setTotalPage(tmpPage);
   }, [handlePageChange, tmpPage]);
 
   return (
-    <div>
-      {category} RESULT
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column'
+      }}
+    >
+      <h2>{category}</h2>
       <Contents data={data} category={category} />
       <Pagination
         page={currentPage}
