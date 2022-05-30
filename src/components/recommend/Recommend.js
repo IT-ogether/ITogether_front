@@ -1,29 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss'; //basic
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-
-const DUMMYDATA = {
-  name: '민석',
-  category: '프론트엔드',
-  recommends: [
-    {
-      informationId: 1,
-      title: '넥스터즈',
-      url: 'http://teamnexters.com/',
-      category: 'club'
-    },
-    {
-      informationId: 2,
-      title: 'SOPT',
-      url: 'http://sopt.org/wp/',
-      category: 'club'
-    }
-  ]
-};
 
 const Recommend = () => {
   const navigate = useNavigate();
@@ -53,7 +34,7 @@ const Recommend = () => {
     getRecommendation();
   }, []);
 
-  SwiperCore.use([Navigation, Pagination, Autoplay]);
+  SwiperCore.use([Pagination, Autoplay]);
 
   return (
     <div
@@ -73,8 +54,10 @@ const Recommend = () => {
         {localStorage.getItem('preference')} 활동들
       </div>
       <Swiper
+        autoplay={{
+          delay: 500
+        }}
         style={{ width: '50vw', height: '10vh' }}
-        spaceBetween={20}
         slidesPerView={1}
         pagination={{ clickable: true }}
       >
