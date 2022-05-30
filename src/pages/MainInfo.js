@@ -5,7 +5,6 @@ import Contents from '../components/Contents';
 import Category from '../components/Category';
 import { request } from '../components/config/axios';
 import Recommend from '../components/recommend/Recommend';
-import Preferences from '../components/Preferences';
 import { getBookMarkAsyncThunk } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { ConstructionOutlined, Store } from '@mui/icons-material';
@@ -60,13 +59,19 @@ const MainInfo = () => {
       .catch((e) => console.log(e));
   };
 
-  useEffect(() => getData(), []);
+  useEffect(() => {
+    getData();
+    if (localStorage.getItem('isLogged') != null)
+      setIsLogin((isLogged) => true);
+    else setIsLogin(false);
+  }, []);
 
   const [chosenCategory, setChosenCategory] = useState('club');
   const [data, setData] = useState([]);
   const [totalPage, setTotalPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [tmpPage, setTmpPage] = useState(1);
+  const [isLogin, setIsLogin] = useState(false);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -88,7 +93,6 @@ const MainInfo = () => {
   return (
     <AppLayout>
       <div>
-        <Preferences />
         <Category
           categories={categories}
           setChosenCategory={setChosenCategory}
@@ -101,9 +105,7 @@ const MainInfo = () => {
           color="primary"
         />
       </div>
-      <div>
-        <Recommend />
-      </div>
+      <div>{isLogin && <Recommend />}</div>
     </AppLayout>
   );
 };

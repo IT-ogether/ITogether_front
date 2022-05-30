@@ -9,7 +9,6 @@ const Contents = ({ data, category }) => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   console.log(data);
 
   const getBookMarks = async () => {

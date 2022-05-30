@@ -55,6 +55,7 @@ const Preferences = () => {
       })
     };
 
+    localStorage.setItem('preference', dataLists[checkBoxIndex].data);
     console.log(requestOptions.body);
     fetch(process.env.REACT_APP_URL + '/preference', requestOptions)
       .then(localStorage.setItem('preference', requestOptions.body.field))

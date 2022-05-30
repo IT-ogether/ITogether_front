@@ -1,4 +1,4 @@
-const SpeechBubbleRight = ({ text }) => {
-  return <div className="speech-bubble-right">{text}</div>;
+const SpeechBubbleRight = ({ children }) => {
+  return <div className="speech-bubble-right">{children}</div>;
 };
 export default SpeechBubbleRight;
