@@ -12,7 +12,7 @@ import 'swiper/css/scrollbar';
 
 const Popularity = () => {
   const [datas, setDatas] = useState([]);
-  const aa = 'sibal';
+
   const textDatas = [
     {
       siteUrl: 'http://sopt.org/wp/',

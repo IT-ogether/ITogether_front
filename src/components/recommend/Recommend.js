@@ -1,24 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { request } from '../config/axios';
-const DUMMYDATA = {
-  name: '민석',
-  category: '프론트엔드',
-  recommends: [
-    {
-      informationId: 1,
-      title: '넥스터즈',
-      url: 'http://teamnexters.com/',
-      category: 'club'
-    },
-    {
-      informationId: 2,
-      title: 'SOPT',
-      url: 'http://sopt.org/wp/',
-      category: 'club'
-    }
-  ]
-};
+import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/scss'; //basic
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 
 const Recommend = () => {
   const navigate = useNavigate();
@@ -38,6 +24,7 @@ const Recommend = () => {
         return res.json();
       })
       .then((res) => {
+        console.log(res);
         setRecommendation(res);
       })
       .catch((err) => console.log(err));
@@ -47,11 +34,11 @@ const Recommend = () => {
     getRecommendation();
   }, []);
 
+  SwiperCore.use([Pagination, Autoplay]);
+
   return (
     <div
       style={{
-        position: 'sticky',
-        border: '1px solid gray',
         padding: '10px 2rem',
         fontFamily: 'jua',
         borderRadius: '5px'
@@ -66,24 +53,52 @@ const Recommend = () => {
         <br />
         {localStorage.getItem('preference')} 활동들
       </div>
-      {recommendation.map((recommend) => (
-        <div
-          style={{
-            border: '1px solid gray',
-            padding: '10px',
-            margin: '10px',
-            cursor: 'pointer',
-            borderRadius: '5px'
-          }}
-          onClick={() =>
-            navigate(
-              `/detailinfo/${recommend.category}/${recommend.informationId}`
-            )
-          }
-        >
-          {recommend.title}
-        </div>
-      ))}
+      <Swiper
+        autoplay={{
+          delay: 3000
+        }}
+        style={{ width: '50vw', height: '10vh' }}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoHeight={true}
+      >
+        {recommendation.map((recommend) => (
+          <SwiperSlide
+            style={{
+              width: '50vw',
+              height: '10vh',
+              cursor: 'pointer',
+              borderRadius: '5px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            key={recommend.informationId}
+          >
+            <div
+              style={{
+                width: '40vw',
+                height: '8vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              onClick={() =>
+                navigate(
+                  `/detailinfo/${recommend.categoryName}/${recommend.informationId}`
+                )
+              }
+            >
+              <img
+                width="100em"
+                height="100em"
+                src={recommend.logo}
+                alt="logo"
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
