@@ -92,12 +92,22 @@ const MainInfo = () => {
 
   return (
     <AppLayout>
-      <div>
+      <div>{isLogin && <Recommend />}</div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
         <Category
           categories={categories}
           setChosenCategory={setChosenCategory}
         />
-        <Contents data={data} category={chosenCategory} />
+        <div>
+          <Contents data={data} category={chosenCategory} />
+        </div>
         <Pagination
           page={currentPage}
           onChange={handlePageChange}
@@ -105,7 +115,6 @@ const MainInfo = () => {
           color="primary"
         />
       </div>
-      <div>{isLogin && <Recommend />}</div>
     </AppLayout>
   );
 };

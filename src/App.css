@@ -31,10 +31,12 @@ body {
 }
 
 .AppLayout {
+  padding-top:5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
+
 /*Footer*/
 .Footer {
   color: gray;

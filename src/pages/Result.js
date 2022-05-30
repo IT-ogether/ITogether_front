@@ -17,7 +17,7 @@ const Result = () => {
     await request
       .get(`/main-info?field=${category}?pageNum=${currentPage}`, {
         headers: {
-          'Content-Type': 'text/html; charset=utf-8'
+          'Content-Type': 'application/json; charset=utf-8'
         }
       })
       .then((res) => {
