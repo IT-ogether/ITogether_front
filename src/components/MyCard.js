@@ -83,7 +83,7 @@ export default function MyCard({
             {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
           </IconButton>
           <IconButton aria-label="share">
-            <KakaoShareButton title={title} imgUrl={logo} />
+            <KakaoShareButton id={informationId} title={title} imgUrl={logo} />
           </IconButton>
         </CardActions>
       </Card>
