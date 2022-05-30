@@ -39,6 +39,9 @@ const Recommend = () => {
   return (
     <div
       style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         padding: '10px 2rem',
         fontFamily: 'jua',
         borderRadius: '5px'
