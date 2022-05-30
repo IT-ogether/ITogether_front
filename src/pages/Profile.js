@@ -27,6 +27,7 @@ const Profile = () => {
         setEmail((nickName) => response.data.email);
         setProfileImg((profileImage) => response.data.profileImage);
         setBookMarks((bookMakrs) => response.data.bookMark);
+        localStorage.setItem('nickname', response.data.nickName);
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +41,7 @@ const Profile = () => {
     <AppLayout>
       <div className="Profile">
         <div className="Profile__Img__Div">
-          <img className="Profile__Img" src={profileImg} />
+          <img className="Profile__Img" src={profileImg} alt="profile_img" />
           <div className="Profile__Name">
             <h1>{nickName}</h1>
             <h1>{email}</h1>

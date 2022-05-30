@@ -20,9 +20,11 @@ const DUMMYDATA = {
 
 const Recommend = () => {
   const navigate = useNavigate();
+
   return (
     <div
       style={{
+        position: 'sticky',
         border: '1px solid gray',
         padding: '10px 2rem',
         fontFamily: 'jua',
@@ -34,9 +36,9 @@ const Recommend = () => {
           fontSize: 30
         }}
       >
-        {DUMMYDATA.name}님을 위한
+        {localStorage.getItem('nickname')}님을 위한
         <br />
-        {DUMMYDATA.category} 활동들
+        {localStorage.getItem('preference')} 활동들
       </div>
       {DUMMYDATA.recommends.map((recommend) => (
         <div
