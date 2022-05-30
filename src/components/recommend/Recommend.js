@@ -20,27 +20,31 @@ const DUMMYDATA = {
   ]
 };
 
-const getRecommendation = async () => {
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      'Content-type': 'application/json',
-      token: localStorage.getItem('accessToken')
-    }
-  };
-
-  await fetch(process.env.REACT_APP_URL + '/recommendation', requestOptions)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
-};
-
 const Recommend = () => {
   const navigate = useNavigate();
-  const [recommendation, setRecommendation] = useState(null);
+  const [recommendation, setRecommendation] = useState([]);
+
+  const getRecommendation = async () => {
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        token: localStorage.getItem('accessToken')
+      }
+    };
+
+    await fetch(process.env.REACT_APP_URL + '/recommendation', requestOptions)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        setRecommendation(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
-    const res = getRecommendation();
-    console.log(res);
+    getRecommendation();
   }, []);
 
   return (
@@ -62,7 +66,7 @@ const Recommend = () => {
         <br />
         {localStorage.getItem('preference')} 활동들
       </div>
-      {DUMMYDATA.recommends.map((recommend) => (
+      {recommendation.map((recommend) => (
         <div
           style={{
             border: '1px solid gray',
