@@ -93,9 +93,8 @@ const Recommend = () => {
               }
             >
               <img
-                width="100em"
-                height="100em"
                 src={recommend.logo}
+                style={{ maxWidth: '30vw', maxHeight: '8vh' }}
                 alt="logo"
               />
             </div>
