@@ -22,7 +22,7 @@ const Profile = () => {
         }
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setNickName((nickName) => response.data.nickName);
         setEmail((nickName) => response.data.email);
         setProfileImg((profileImage) => response.data.profileImage);

@@ -5,7 +5,7 @@ const BookMarksReducer = (state = [], action) => {
       return state;
     case 'ADD-BOOKMARK':
       state.push(action.payload);
-      console.log('in');
+      // console.log('in');
       return state;
     case 'DEL-BOOKMARK':
       for (let i = 0; i < state.length; i++) {

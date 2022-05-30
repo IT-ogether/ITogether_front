@@ -32,21 +32,6 @@ const getRecommendation = async () => {
   await fetch(process.env.REACT_APP_URL + '/recommendation', requestOptions)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
-  // await request
-  //   .get(
-  //     `/recommendation`,
-  //     { body: null },
-  //     {
-  //       headers: {
-  //         token: localStorage.getItem('accessToken'),
-  //         'Content-type': 'text/plain; charset=utf-8'
-  //       }
-  //     }
-  //   )
-  //   .then((res) => {
-  //     console.log(res);
-  //     return res;
-  //   });
 };
 
 const Recommend = () => {

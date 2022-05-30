@@ -24,7 +24,7 @@ const DetailInfo = () => {
           return res.data;
         })
         .then((result) => {
-          console.log(result);
+          // console.log(result);
           setReviews(result.reviews);
           setData(result.detailInfo);
         });

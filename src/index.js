@@ -11,7 +11,7 @@ const store = createStore(reducers, applyMiddleware(ReduxThunk));
 
 const listner = () => {
   const state = store.getState();
-  console.log(state);
+  // console.log(state);
 };
 
 store.subscribe(listner);

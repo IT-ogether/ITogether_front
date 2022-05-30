@@ -30,22 +30,22 @@ export default function MyCard({
   const [liked, setLiked] = useState(false);
 
   const likedInit = () => {
-    console.log(bookMarks);
+    // console.log(bookMarks);
     bookMarks.map((it) => {
       if (informationId === it) {
-        console.log(it + 'liked!');
+        // console.log(it + 'liked!');
         setLiked((state) => true);
         return false;
       }
     });
   };
   const postBookMark = async () => {
-    console.log('add: ' + informationId);
+    // console.log('add: ' + informationId);
     dispatch(addBookMarkAsyncThunk(informationId));
   };
 
   const delBookMark = async () => {
-    console.log('del: ' + informationId);
+    // console.log('del: ' + informationId);
     dispatch(delBookMarkAsyncThunk(informationId));
   };
   const onToggleLike = async () => {

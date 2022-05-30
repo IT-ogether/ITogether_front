@@ -36,20 +36,20 @@ const MainInfo = () => {
   ];
 
   const setPaginationProps = (totalCount, perPageNum) => {
-    console.log('totalCount' + totalCount + 'perPageNum:' + perPageNum);
+    // console.log('totalCount' + totalCount + 'perPageNum:' + perPageNum);
     setTmpPage(Math.ceil(totalCount / perPageNum));
   };
 
   const getData = async () => {
-    console.log('chosenCateogry', chosenCategory);
-    console.log('currentPage', currentPage);
+    // console.log('chosenCateogry', chosenCategory);
+    // console.log('currentPage', currentPage);
     await request
       .get(`/main-info/${chosenCategory}?pageNum=${currentPage}`)
       .then((res) => {
         return res.data;
       })
       .then((data) => {
-        console.log(data.pageDTO.cri.perPageNum);
+        // console.log(data.pageDTO.cri.perPageNum);
         setPaginationProps(
           data.pageDTO.totalCount,
           data.pageDTO.cri.perPageNum

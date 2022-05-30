@@ -1,9 +1,8 @@
-import AppLayout from '../components/AppLayout';
 import HomeScrolls from '../components/HomeScrolls';
 import Header from '../components/Header';
 
 const Home = () => {
-  console.log('HI');
+  // console.log('HI');
   return (
     <div>
       <Header />

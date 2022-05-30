@@ -14,7 +14,7 @@ export const getBookMarkAsyncThunk = () => async (dispatch, getState) => {
         arr.push(it.informationId);
       });
       dispatch({ type: 'GET-BOOKMARK', payload: arr });
-      console.log('first');
+      // console.log('first');
     })
     .catch((err) => {
       console.log(err);
