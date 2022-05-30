@@ -147,7 +147,7 @@ body {
 
 /*SpeechBubble*/
 .speech-bubble-left {
-  padding: 8px;
+  padding: 0.7rem;
   margin: 20px 0;
   position: relative;
   background: var(--color-highlight);
@@ -176,7 +176,7 @@ body {
 }
 
 .speech-bubble-right {
-  padding: 8px;
+  padding: 0.7rem;
   margin: 20px 0;
   position: relative;
   background: #8ab1f0;
