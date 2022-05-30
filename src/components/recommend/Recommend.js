@@ -1,4 +1,6 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { request } from '../config/axios';
 const DUMMYDATA = {
   name: '민석',
   category: '프론트엔드',
@@ -18,8 +20,43 @@ const DUMMYDATA = {
   ]
 };
 
+const getRecommendation = async () => {
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json',
+      token: localStorage.getItem('accessToken')
+    }
+  };
+
+  await fetch(process.env.REACT_APP_URL + '/recommendation', requestOptions)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+  // await request
+  //   .get(
+  //     `/recommendation`,
+  //     { body: null },
+  //     {
+  //       headers: {
+  //         token: localStorage.getItem('accessToken'),
+  //         'Content-type': 'text/plain; charset=utf-8'
+  //       }
+  //     }
+  //   )
+  //   .then((res) => {
+  //     console.log(res);
+  //     return res;
+  //   });
+};
+
 const Recommend = () => {
   const navigate = useNavigate();
+  const [recommendation, setRecommendation] = useState(null);
+
+  useEffect(() => {
+    const res = getRecommendation();
+    console.log(res);
+  }, []);
 
   return (
     <div

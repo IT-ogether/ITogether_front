@@ -82,11 +82,28 @@ const DetailInfo = () => {
           ))}
 
         <div className="DetailInfo__SpeechBubble">
-          <SpeechBubbleLeft text={'모집일자는 변경될 수 있습니다 '} />
-          <SpeechBubbleRight
-            text={`모집이 시작되었을 때 알림이 받고 싶다면
-             ITogether 채널을 추가해주세요!`}
-          />
+          <SpeechBubbleLeft>
+            <div>상세 일정은 공식 사이트에서 확인 부탁드립니다</div>
+            <br />
+            <div>모집 일자는 변경될 수 있습니다</div>
+          </SpeechBubbleLeft>
+          <SpeechBubbleRight>
+            <div>모집이 시작되었을 때 알림이 받고 싶다면</div>
+            <br />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <img
+                onClick={() => {
+                  window.open('https://pf.kakao.com/_xgKxhNb', '_blank');
+                }}
+                src="/images/kakaochannel.png"
+                alt="kakao"
+                width="40px"
+                height="40px"
+                style={{ marginRight: '10px', cursor: 'pointer' }}
+              />{' '}
+              <div>ITogether 채널을 추가해주세요!</div>
+            </div>
+          </SpeechBubbleRight>
         </div>
       </div>
     </AppLayout>
