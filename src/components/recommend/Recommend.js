@@ -55,11 +55,12 @@ const Recommend = () => {
       </div>
       <Swiper
         autoplay={{
-          delay: 500
+          delay: 3000
         }}
         style={{ width: '50vw', height: '10vh' }}
         slidesPerView={1}
         pagination={{ clickable: true }}
+        autoHeight={true}
       >
         {recommendation.map((recommend) => (
           <SwiperSlide
