@@ -8,6 +8,7 @@ import DetailInfo from './pages/DetailInfo';
 import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
+import Result from './pages/Result';
 
 const THEME = createTheme({
   typography: {
@@ -97,6 +98,7 @@ function App() {
                   path="/detailinfo/:category/:informationId"
                   element={<DetailInfo />}
                 />
+                <Route path="/result/:category" element={<Result />} />
                 <Route path="/oauth/kakao/callback" element={<Auth />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
