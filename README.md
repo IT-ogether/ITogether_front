@@ -10,7 +10,7 @@
 <table>
  <tr align="center">
     <td><a href="https://github.com/Hyevvy">Hyevvy</a></td>
-    <td><a href="https://github.com/KoDongE">고동욱</a></td>
+    <td><a href="https://github.com/KoDongE">KoDong</a></td>
   </tr>
 
   <tr align="center">
