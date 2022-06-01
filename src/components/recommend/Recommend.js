@@ -13,39 +13,7 @@ const Recommend = () => {
   const [recommendation, setRecommendation] = useState([]);
   const preference = useSelector((state) => state.preference);
   const nickName = useSelector((state) => state.nickName);
-  console.log(nickName);
-  console.log(preference);
-  /*const getPreference = async () => {
-    await request
-      .get(process.env.REACT_APP_URL + '/preference', {
-        headers: {
-          token: localStorage.getItem('accessToken')
-        }
-      })
-      .then((res) => {
-        console.log(res.data.field);
-        setPreference((state) => res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const getNickName = async () => {
-    await request
-      .get(process.env.REACT_APP_URL + '/profile', {
-        headers: {
-          token: localStorage.getItem('accessToken')
-        }
-      })
-      .then((res) => {
-        console.log(res.data.nickName);
-        setNickName((state) => res.data.nickName);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };*/
+  
   const getRecommendation = async () => {
     const requestOptions = {
       method: 'GET',
