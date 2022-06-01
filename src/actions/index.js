@@ -1,6 +1,45 @@
 import { request } from '../components/config/axios';
 
 //Action creators for thunk
+export const getPreferenceAsyncThunk = () => async (dispatch, getState) => {
+  await request
+    .get(process.env.REACT_APP_URL + '/preference', {
+      headers: {
+        token: localStorage.getItem('accessToken')
+      }
+    })
+    .then((res) => {
+      dispatch({
+        type: 'GET-PREFERENCE',
+        payload: res.data.field
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return 'GET-PREFERENCE';
+};
+
+export const getUserNameAsyncThunk = () => async (dispatch, getState) => {
+  await request
+    .get(process.env.REACT_APP_URL + '/profile', {
+      headers: {
+        token: localStorage.getItem('accessToken')
+      }
+    })
+    .then((res) => {
+      console.log(res.data);
+      dispatch({
+        type: 'GET-USERNAME',
+        payload: res.data.nickName
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return 'GET-USERNAME';
+};
+
 export const getBookMarkAsyncThunk = () => async (dispatch, getState) => {
   await request
     .get(process.env.REACT_APP_URL + '/bookmarks', {

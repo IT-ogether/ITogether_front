@@ -5,9 +5,8 @@ import Contents from '../components/Contents';
 import Category from '../components/Category';
 import { request } from '../components/config/axios';
 import Recommend from '../components/recommend/Recommend';
-import { getBookMarkAsyncThunk } from '../actions';
+import { getPreferenceAsyncThunk, getUserNameAsyncThunk } from '../actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { ConstructionOutlined, Store } from '@mui/icons-material';
 
 const MainInfo = () => {
   const dispatch = useDispatch();
@@ -64,6 +63,12 @@ const MainInfo = () => {
     if (localStorage.getItem('isLogged') != null)
       setIsLogin((isLogged) => true);
     else setIsLogin(false);
+  }, []);
+
+  useEffect(() => {
+    console.log('in');
+    dispatch(getPreferenceAsyncThunk());
+    dispatch(getUserNameAsyncThunk());
   }, []);
 
   const [chosenCategory, setChosenCategory] = useState('club');

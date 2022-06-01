@@ -2,14 +2,50 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import 'swiper/scss'; //basic
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
+import { request } from '../config/axios';
 
 const Recommend = () => {
   const navigate = useNavigate();
   const [recommendation, setRecommendation] = useState([]);
+  const preference = useSelector((state) => state.preference);
+  const nickName = useSelector((state) => state.nickName);
+  console.log(nickName);
+  console.log(preference);
+  /*const getPreference = async () => {
+    await request
+      .get(process.env.REACT_APP_URL + '/preference', {
+        headers: {
+          token: localStorage.getItem('accessToken')
+        }
+      })
+      .then((res) => {
+        console.log(res.data.field);
+        setPreference((state) => res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  const getNickName = async () => {
+    await request
+      .get(process.env.REACT_APP_URL + '/profile', {
+        headers: {
+          token: localStorage.getItem('accessToken')
+        }
+      })
+      .then((res) => {
+        console.log(res.data.nickName);
+        setNickName((state) => res.data.nickName);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };*/
   const getRecommendation = async () => {
     const requestOptions = {
       method: 'GET',
@@ -52,15 +88,15 @@ const Recommend = () => {
           fontSize: 30
         }}
       >
-        {localStorage.getItem('nickname')}님을 위한
+        {nickName}님을 위한
         <br />
-        {localStorage.getItem('preference')} 활동들
+        {preference} 활동들
       </div>
       <Swiper
         autoplay={{
           delay: 3000
         }}
-        style={{ width: '50vw', height: '10vh' }}
+        style={{ width: '70vw', height: '20vh' }}
         slidesPerView={1}
         pagination={{ clickable: true }}
         autoHeight={true}
@@ -68,8 +104,8 @@ const Recommend = () => {
         {recommendation.map((recommend) => (
           <SwiperSlide
             style={{
-              width: '50vw',
-              height: '10vh',
+              width: '80vw',
+              height: '15vh',
               cursor: 'pointer',
               borderRadius: '5px',
               display: 'flex',
@@ -80,8 +116,8 @@ const Recommend = () => {
           >
             <div
               style={{
-                width: '40vw',
-                height: '8vh',
+                width: '80vw',
+                height: '10vh',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
@@ -94,7 +130,7 @@ const Recommend = () => {
             >
               <img
                 src={recommend.logo}
-                style={{ maxWidth: '30vw', maxHeight: '8vh' }}
+                style={{ maxWidth: '30vw', maxHeight: '10vh' }}
                 alt="logo"
               />
             </div>
