@@ -11,7 +11,7 @@ const Profile = () => {
   const [email, setEmail] = useState();
   const [profileImg, setProfileImg] = useState();
   const [bookMarks, setBookMarks] = useState();
-
+  console.log(bookMarks);
   async function getProfile() {
     const accessToken = localStorage.getItem('accessToken');
 
@@ -51,11 +51,24 @@ const Profile = () => {
           <Preferences />
         </div>
         <div className="Profile__BookMarks">
+          <div
+            style={{
+              fontSize: '4vmin',
+              fontWeight: 'bold',
+              marginBottom: '10px'
+            }}
+          >
+            북마크 목록
+          </div>
           {bookMarks &&
             bookMarks.map((item) => (
-              <h1 className="Profile__BookMarks" key={item.informationId}>
+              <div
+                className="Profile__BookMarks"
+                key={item.informationId}
+                style={{ fontSize: '2vmin', marginBottom: '5px' }}
+              >
                 {item.title}
-              </h1>
+              </div>
             ))}
         </div>
       </div>
